@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trần Đức Mạnh - Bulk Mail Control System</title>
+  <title>Trần Đức Mạnh - Bulk Mail Control Center</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -58,7 +58,7 @@
           <h1 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-300">
             TDM Bulk Mailer Pro
           </h1>
-          <p class="text-xs text-slate-400 mt-0.5">Hệ thống gửi Email tự động thiết kế bởi <span class="text-indigo-400 font-semibold">Trần Đức Mạnh</span></p>
+          <p class="text-xs text-slate-400 mt-0.5">Hệ thống gửi Email tự động phát triển bởi <span class="text-indigo-400 font-semibold">Trần Đức Mạnh</span></p>
         </div>
       </div>
 
@@ -68,16 +68,16 @@
           <span id="serverPingDot" class="w-2.5 h-2.5 rounded-full bg-slate-500"></span>
           <div class="text-left">
             <p class="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Sender Email Active</p>
-            <p id="activeSenderText" class="text-xs text-indigo-300 font-mono font-medium">Đang kết nối Backend...</p>
+            <p id="activeSenderText" class="text-xs text-indigo-300 font-mono font-medium">Đang kiểm tra kết nối...</p>
           </div>
         </div>
       </div>
     </header>
 
-    <!-- Main Grid Layout -->
+    <!-- Main Grid -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
-      <!-- Form Nhập Liệu (Bên Trái) -->
+      <!-- Form Nhập Liệu -->
       <div class="lg:col-span-7 glass rounded-3xl p-6 shadow-xl space-y-5">
         <div class="flex items-center justify-between border-b border-slate-800 pb-3">
           <h2 class="text-sm font-semibold text-indigo-300 flex items-center gap-2">
@@ -87,14 +87,14 @@
         </div>
 
         <form id="emailForm" class="space-y-4">
-          <!-- Danh sách email nhận -->
+          <!-- Email nhận -->
           <div>
-            <label class="block text-xs font-medium text-slate-300 mb-1.5">Danh sách Email nhận (Ngăn cách bằng xuống dòng hoặc phẩy)</label>
+            <label class="block text-xs font-medium text-slate-300 mb-1.5">Danh sách Email nhận (Xuống dòng hoặc phân cách bởi dấu phẩy)</label>
             <textarea id="recipients" rows="3" required placeholder="nguoinhan1@gmail.com&#10;nguoinhan2@gmail.com"
               class="glass-input w-full rounded-2xl px-4 py-3 text-xs placeholder-slate-500 custom-scrollbar"></textarea>
           </div>
 
-          <!-- Tiêu đề & Lặp -->
+          <!-- Tiêu đề & Số lần gửi -->
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div class="md:col-span-2">
               <label class="block text-xs font-medium text-slate-300 mb-1.5">Tiêu đề Thư</label>
@@ -102,13 +102,13 @@
                 class="glass-input w-full rounded-2xl px-4 py-2.5 text-xs placeholder-slate-500" />
             </div>
             <div>
-              <label class="block text-xs font-medium text-slate-300 mb-1.5">Số lượt gửi lặp lại</label>
+              <label class="block text-xs font-medium text-slate-300 mb-1.5">Số lần lặp lại</label>
               <input type="number" id="repeatCount" value="1" min="1" required
                 class="glass-input w-full rounded-2xl px-4 py-2.5 text-xs text-center font-bold text-indigo-300" />
             </div>
           </div>
 
-          <!-- Định dạng nội dung -->
+          <!-- Định dạng -->
           <div>
             <label class="block text-xs font-medium text-slate-300 mb-1.5">Định dạng Nội dung</label>
             <div class="flex gap-6 pt-0.5">
@@ -121,14 +121,14 @@
             </div>
           </div>
 
-          <!-- Nội dung thư -->
+          <!-- Nội dung -->
           <div>
             <label class="block text-xs font-medium text-slate-300 mb-1.5">Nội dung Thư</label>
             <textarea id="content" rows="5" required placeholder="Nhập nội dung thư hoặc mã HTML..."
               class="glass-input w-full rounded-2xl px-4 py-3 text-xs placeholder-slate-500 font-mono custom-scrollbar"></textarea>
           </div>
 
-          <!-- File đính kèm -->
+          <!-- Tệp đính kèm -->
           <div>
             <label class="block text-xs font-medium text-slate-300 mb-1.5">Tệp đính kèm (Nhiều tệp)</label>
             <input type="file" id="attachments" multiple
@@ -143,7 +143,7 @@
         </form>
       </div>
 
-      <!-- Khung Nhật Ký & Tiến Trình Realtime (Bên Phải) -->
+      <!-- Khung Terminal Logs Realtime -->
       <div class="lg:col-span-5 flex flex-col gap-5">
 
         <!-- Stat Cards -->
@@ -158,17 +158,17 @@
           </div>
         </div>
 
-        <!-- Progress Bar & Delay Status -->
+        <!-- Progress Bar -->
         <div class="glass rounded-2xl p-4 border border-indigo-500/30 space-y-3">
           <div class="flex justify-between items-center text-xs">
-            <span class="text-slate-400 font-medium">Tiến trình gửi:</span>
+            <span class="text-slate-400 font-medium">Tiến trình:</span>
             <span id="progressText" class="text-indigo-300 font-bold">0%</span>
           </div>
           <div class="w-full bg-slate-900 rounded-full h-2.5 overflow-hidden p-0.5 border border-slate-800">
             <div id="progressBar" class="bg-gradient-to-r from-indigo-500 to-pink-500 h-1.5 rounded-full transition-all duration-300 w-0"></div>
           </div>
 
-          <!-- Countdown Delay Box -->
+          <!-- Countdown Delay -->
           <div id="countdownBox" class="hidden pt-2 text-center border-t border-slate-800/80 animate-pulse">
             <p class="text-[11px] text-indigo-300">Đang thực hiện Delay an toàn (15 giây)...</p>
             <p id="countdownText" class="text-xl font-bold text-indigo-400 mt-0.5">15s</p>
@@ -195,14 +195,14 @@
 
     <!-- Footer -->
     <footer class="text-center text-xs text-slate-500 pt-2">
-      © 2026 Developed by <span class="text-indigo-400 font-semibold">Trần Đức Mạnh</span>. All rights reserved.
+      © 2026 Developed by <span class="text-indigo-400 font-semibold">Trần Đức Mạnh</span>.
     </footer>
 
   </div>
 
   <script>
-    // 💥 CHỈ CẦN DÁN LINK RAILWAY BACKEND CỦA BẠN VÀO ĐÂY (KHÔNG CÓ DẤU / Ở CUỐI)
-    const BACKEND_RAILWAY_URL = "https://tdmmailback-production.up.railway.app";
+    // 💥 DÁN LINK RAILWAY CỦA BẠN VÀO ĐÂY (KHÔNG DẤU / Ở CUỐI)
+    const BACKEND_RAILWAY_URL = "https://tdm-email-backend-production.up.railway.app";
 
     const emailForm = document.getElementById('emailForm');
     const submitBtn = document.getElementById('submitBtn');
@@ -219,7 +219,6 @@
 
     let countdownTimer = null;
 
-    // Tự động kiểm tra trạng thái Backend Railway khi mở trang
     async function checkServerHealth() {
       try {
         const res = await fetch(`${BACKEND_RAILWAY_URL}/api/health`);
@@ -233,13 +232,13 @@
           } else {
             serverPingDot.className = 'w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping';
             activeSenderText.className = 'text-xs text-amber-400 font-mono font-medium';
-            activeSenderText.innerText = 'Thiếu Variables trên Railway!';
+            activeSenderText.innerText = 'Thiếu SENDER_EMAIL/APP_PASSWORD';
           }
         }
       } catch (err) {
         serverPingDot.className = 'w-2.5 h-2.5 rounded-full bg-rose-500';
         activeSenderText.className = 'text-xs text-rose-400 font-mono font-medium';
-        activeSenderText.innerText = 'Không thể kết nối Backend!';
+        activeSenderText.innerText = 'Chưa kết nối được Backend!';
       }
     }
 
@@ -272,7 +271,6 @@
     emailForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      // Reset UI
       logArea.innerHTML = '';
       successCount.innerText = '0';
       failedCount.innerText = '0';
@@ -282,7 +280,7 @@
       submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
       liveStatusBadge.className = 'w-2 h-2 rounded-full bg-emerald-400 animate-ping';
 
-      addLog('🚀 Khởi tạo tiến trình gửi email tới Server...', 'text-indigo-400 font-semibold');
+      addLog('🚀 Kết nối tới Backend Railway...', 'text-indigo-400 font-semibold');
 
       const formData = new FormData();
       formData.append('recipients', document.getElementById('recipients').value);
@@ -304,7 +302,7 @@
 
         if (!response.ok) {
           const errData = await response.json();
-          throw new Error(errData.message || 'Lỗi xử lý yêu cầu.');
+          throw new Error(errData.message || 'Lỗi kết nối API');
         }
 
         const reader = response.body.getReader();
@@ -348,7 +346,7 @@
           });
         }
       } catch (err) {
-        addLog(`❌ Lỗi hệ thống: ${err.message}`, 'text-rose-500 font-bold');
+        addLog(`❌ Lỗi: ${err.message}`, 'text-rose-500 font-bold');
       } finally {
         submitBtn.disabled = false;
         submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
